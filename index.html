@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teleset — Тарифы и услуги</title>
+  <title>Teleset — Личный кабинет</title>
   <style>
-    /* Сброс стилей и базовые настройки */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
@@ -13,8 +12,6 @@
       color: #374151;
       line-height: 1.5;
     }
-
-    /* Сетка 1300px */
     .container {
       width: 100%;
       max-width: 1300px;
@@ -48,18 +45,10 @@
       background-color: #9CA3AF;
       border-radius: 8px;
     }
-    .nav {
-      display: flex;
-      gap: 30px;
-      font-size: 16px;
-    }
+    .nav { display: flex; gap: 30px; font-size: 16px; }
     .nav a { text-decoration: none; color: #374151; }
     .nav a.active { color: #111827; font-weight: 600; }
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 24px;
-    }
+    .header-actions { display: flex; align-items: center; gap: 24px; }
     .btn {
       background-color: #6B7280;
       color: #FFFFFF;
@@ -69,141 +58,209 @@
       text-decoration: none;
       border: none;
       cursor: pointer;
+      font-size: 16px;
     }
 
-    /* HERO */
-    .hero {
-      padding: 80px 0;
-      background-color: #F3F4F6;
-      text-align: center;
+    /* PAGE HEAD */
+    .page-head {
+      padding: 50px 0 20px;
     }
-    .hero h1 {
-      font-size: 48px;
-      line-height: 1.1;
+    .page-head h1 {
+      font-size: 36px;
       color: #111827;
-      margin-bottom: 20px;
-      font-weight: bold;
+      margin-bottom: 8px;
     }
-    .hero p {
-      font-size: 18px;
+    .page-head p {
       color: #6B7280;
-      max-width: 640px;
-      margin: 0 auto;
+      font-size: 15px;
     }
 
-    /* СЕКЦИЯ ТАРИФОВ */
-    .tariffs-section {
-      background-color: #FFFFFF;
-      padding: 80px 0;
+    /* DASHBOARD LAYOUT */
+    .dashboard {
+      padding: 20px 0 80px;
     }
-    .tariffs-group {
-      margin-bottom: 60px;
-      scroll-margin-top: 20px;
-    }
-    .tariffs-group:last-child {
-      margin-bottom: 0;
-    }
-    .group-title {
-      font-size: 28px;
-      font-weight: bold;
-      color: #111827;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 14px;
-    }
-    .badge-new {
-      background-color: #D1D5DB;
-      color: #374151;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 4px 12px;
-      border-radius: 999px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-
-    /* Сетка карточек */
-    .grid-4 {
+    .dash-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: 2fr 1fr;
       gap: 24px;
+      align-items: start;
     }
-    .grid-1 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 24px;
-    }
-    .grid-1 .card { grid-column: span 1; max-width: 100%; }
-
-    .card {
-      background-color: #F9FAFB;
+    .dash-card {
+      background: #FFFFFF;
       border: 1px solid #E5E7EB;
       border-radius: 16px;
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-    }
-    .card h3 {
-      font-size: 20px;
-      margin-bottom: 18px;
-      color: #111827;
-      font-weight: 600;
-    }
-    .card-features {
-      list-style: none;
+      padding: 28px;
       margin-bottom: 24px;
-      flex: 1;
     }
-    .card-features li {
-      font-size: 15px;
-      color: #6B7280;
-      margin-bottom: 10px;
-      padding-left: 22px;
-      position: relative;
-      line-height: 1.4;
-    }
-    .card-features li::before {
-      content: "";
-      position: absolute;
-      left: 0;
-      top: 5px;
-      width: 12px;
-      height: 12px;
-      background-color: #D1D5DB;
-      border-radius: 50%;
-    }
-    .card-features li b {
-      color: #374151;
+    .dash-card:last-child { margin-bottom: 0; }
+    .dash-card h3 {
+      font-size: 18px;
+      color: #111827;
+      margin-bottom: 20px;
       font-weight: 600;
     }
-    .card-price {
+
+    /* BALANCE */
+    .balance-row {
       display: flex;
-      align-items: baseline;
-      gap: 6px;
+      justify-content: space-between;
+      align-items: flex-end;
       margin-bottom: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
     }
-    .card-price .amount {
-      font-size: 32px;
+    .balance-amount {
+      font-size: 44px;
       font-weight: bold;
       color: #111827;
+      line-height: 1;
     }
-    .card-price .unit {
-      font-size: 14px;
+    .balance-amount small {
+      font-size: 16px;
       color: #9CA3AF;
+      font-weight: 400;
     }
-    .card-btn {
+    .balance-meta {
+      font-size: 14px;
+      color: #6B7280;
+      text-align: right;
+      line-height: 1.6;
+    }
+    .balance-meta strong { color: #111827; }
+    .balance-bar {
+      height: 10px;
+      background: #E5E7EB;
+      border-radius: 999px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+    .balance-bar span {
       display: block;
-      text-align: center;
-      background-color: #6B7280;
-      color: #FFFFFF;
-      padding: 12px 24px;
-      border-radius: 8px;
-      font-weight: 500;
-      text-decoration: none;
-      font-size: 15px;
+      height: 100%;
+      width: 65%;
+      background: #9CA3AF;
+      border-radius: 999px;
     }
+    .balance-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .btn-outline {
+      display: inline-block;
+      padding: 10px 20px;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      background: #FFFFFF;
+      color: #374151;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .btn-outline:hover { background: #F9FAFB; }
+
+    /* SERVICE ROWS */
+    .service-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 1px solid #F3F4F6;
+      gap: 16px;
+    }
+    .service-row:last-child { border-bottom: none; padding-bottom: 0; }
+    .service-row:first-of-type { padding-top: 0; }
+    .service-name {
+      font-size: 15px;
+      color: #111827;
+      font-weight: 500;
+    }
+    .service-desc {
+      font-size: 13px;
+      color: #9CA3AF;
+      margin-top: 2px;
+    }
+    .service-status {
+      font-size: 12px;
+      font-weight: 600;
+      padding: 4px 12px;
+      border-radius: 999px;
+      background: #F3F4F6;
+      color: #6B7280;
+      white-space: nowrap;
+    }
+    .service-status.active {
+      background: #D1D5DB;
+      color: #374151;
+    }
+    .service-price {
+      font-weight: 600;
+      color: #111827;
+      font-size: 15px;
+      white-space: nowrap;
+    }
+
+    /* QUICK ACTIONS */
+    .quick-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .quick-action {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      background: #F9FAFB;
+      text-decoration: none;
+      color: #374151;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background 0.15s;
+    }
+    .quick-action:hover { background: #F3F4F6; }
+    .quick-action .qa-icon {
+      width: 32px;
+      height: 32px;
+      background: #D1D5DB;
+      border-radius: 8px;
+      flex-shrink: 0;
+    }
+
+    /* PROFILE */
+    .profile-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid #F3F4F6;
+      gap: 16px;
+    }
+    .profile-row:last-of-type { border-bottom: none; }
+    .profile-label {
+      font-size: 14px;
+      color: #6B7280;
+    }
+    .profile-value {
+      font-size: 14px;
+      color: #111827;
+      text-align: right;
+    }
+
+    /* LOGOUT */
+    .logout-card {
+      text-align: center;
+      padding: 20px;
+    }
+    .logout-card a {
+      color: #6B7280;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .logout-card a:hover { color: #111827; }
 
     /* FOOTER */
     .footer {
@@ -229,23 +286,6 @@
       margin-bottom: 12px;
       font-size: 15px;
     }
-    .pay-logos {
-      display: flex;
-      gap: 10px;
-      margin-top: 16px;
-    }
-    .pay-logos .logo {
-      width: 42px;
-      height: 28px;
-      background-color: #D1D5DB;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 9px;
-      font-weight: 600;
-      color: #6B7280;
-    }
     .footer-bottom {
       border-top: 1px solid #E5E7EB;
       padding-top: 30px;
@@ -254,12 +294,10 @@
       font-size: 14px;
       color: #9CA3AF;
     }
-    .socials {
-      display: flex;
-      gap: 12px;
-    }
+    .socials { display: flex; gap: 12px; }
     .social-circle {
-      width: 32px; height: 32px;
+      width: 32px;
+      height: 32px;
       background-color: #D1D5DB;
       border-radius: 50%;
       display: flex;
@@ -270,19 +308,22 @@
       color: #6B7280;
     }
 
-    /* Адаптив */
-    @media (max-width: 1100px) {
-      .grid-4, .grid-1 { grid-template-columns: repeat(2, 1fr); }
-    }
+    /* RESPONSIVE */
     @media (max-width: 900px) {
+      .dash-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 768px) {
       .header { height: auto; padding: 16px 0; }
-      .header-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .header-inner {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
       .nav { flex-wrap: wrap; gap: 16px; }
-      .hero h1 { font-size: 32px; }
-      .grid-4, .grid-1 { grid-template-columns: 1fr; }
+      .page-head h1 { font-size: 28px; }
+      .balance-amount { font-size: 34px; }
+      .balance-meta { text-align: left; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; gap: 16px; }
     }
@@ -299,8 +340,9 @@
       </div>
       <nav class="nav">
         <a href="#">Главная</a>
-        <a href="#" class="active">Тарифы и услуги</a>
-        <a href="#domofony">Домофоны и видеонаблюдение</a>
+        <a href="#">Тарифы и услуги</a>
+        <a href="#">Домофоны и видеонаблюдение</a>
+        <a href="#" class="active">Личный кабинет</a>
       </nav>
       <div class="header-actions">
         <a href="#" style="text-decoration: none; color: #374151;">Личный кабинет</a>
@@ -309,217 +351,170 @@
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container">
-      <h1>Тарифы и услуги</h1>
-      <p>Выберите подходящий набор услуг и закажите подключение</p>
+  <!-- PAGE HEAD -->
+  <div class="container">
+    <div class="page-head">
+      <h1>Личный кабинет</h1>
+      <p>Лицевой счёт: 1234567890 · Тариф «Твин супер 200»</p>
     </div>
-  </section>
+  </div>
 
-  <!-- ТАРИФЫ -->
-  <section class="tariffs-section">
+  <!-- DASHBOARD -->
+  <section class="dashboard">
     <div class="container">
+      <div class="dash-grid">
 
-      <!-- ИНТЕРНЕТ + ТЕЛЕВИДЕНИЕ -->
-      <div class="tariffs-group">
-        <div class="group-title">
-          Интернет + Телевидение
-          <span class="badge-new">new!</span>
+        <!-- ЛЕВАЯ КОЛОНКА -->
+        <div>
+
+          <!-- БАЛАНС -->
+          <div class="dash-card">
+            <h3>Баланс</h3>
+            <div class="balance-row">
+              <div class="balance-amount">0 <small>руб.</small></div>
+              <div class="balance-meta">
+                Абонентская плата: <strong>690 руб./мес.</strong><br>
+                Списание: 1 ноября 2026
+              </div>
+            </div>
+            <div class="balance-bar"><span></span></div>
+            <div class="balance-actions">
+              <a href="#" class="btn" style="padding:10px 20px; font-size:14px;">Пополнить</a>
+              <a href="#" class="btn-outline">Автоплатёж</a>
+              <a href="#" class="btn-outline">Обещанный платёж</a>
+            </div>
+          </div>
+
+          <!-- МОИ УСЛУГИ -->
+          <div class="dash-card">
+            <h3>Мои услуги</h3>
+
+            <div class="service-row">
+              <div>
+                <div class="service-name">Интернет</div>
+                <div class="service-desc">Твин супер 200 · до 200 мбит/с</div>
+              </div>
+              <span class="service-status active">Активна</span>
+            </div>
+
+            <div class="service-row">
+              <div>
+                <div class="service-name">Телевидение</div>
+                <div class="service-desc">Цифровое ТВ · 170+ телеканалов</div>
+              </div>
+              <span class="service-status active">Активна</span>
+            </div>
+
+            <div class="service-row">
+              <div>
+                <div class="service-name">Домофон</div>
+                <div class="service-desc">Аудиодомофон для подъезда</div>
+              </div>
+              <span class="service-status">Не подключена</span>
+            </div>
+
+            <div class="service-row">
+              <div>
+                <div class="service-name">Видеонаблюдение</div>
+                <div class="service-desc">Камера на подъезд/двор</div>
+              </div>
+              <span class="service-status">Не подключена</span>
+            </div>
+          </div>
+
+          <!-- ИСТОРИЯ ПЛАТЕЖЕЙ -->
+          <div class="dash-card">
+            <h3>Последние платежи</h3>
+
+            <div class="service-row">
+              <div>
+                <div class="service-name">Октябрь 2026</div>
+                <div class="service-desc">Оплата банковской картой</div>
+              </div>
+              <span class="service-price">690 ₽</span>
+            </div>
+
+            <div class="service-row">
+              <div>
+                <div class="service-name">Сентябрь 2026</div>
+                <div class="service-desc">Оплата банковской картой</div>
+              </div>
+              <span class="service-price">690 ₽</span>
+            </div>
+
+            <div class="service-row">
+              <div>
+                <div class="service-name">Август 2026</div>
+                <div class="service-desc">Автоплатёж</div>
+              </div>
+              <span class="service-price">690 ₽</span>
+            </div>
+          </div>
+
         </div>
-        <div class="grid-4">
 
-          <div class="card">
-            <h3>Твин супер 200</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 200 мбит/с</b></li>
-              <li>Цифровое ТВ <b>170+ телеканалов</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">690</span>
-              <span class="unit">руб./мес.</span>
+        <!-- ПРАВАЯ КОЛОНКА -->
+        <div>
+
+          <!-- БЫСТРЫЕ ДЕЙСТВИЯ -->
+          <div class="dash-card">
+            <h3>Быстрые действия</h3>
+            <div class="quick-actions">
+              <a href="#" class="quick-action">
+                <div class="qa-icon"></div>
+                Сменить тариф
+              </a>
+              <a href="#" class="quick-action">
+                <div class="qa-icon"></div>
+                Подключить услугу
+              </a>
+              <a href="#" class="quick-action">
+                <div class="qa-icon"></div>
+                Приостановить услуги
+              </a>
+              <a href="#" class="quick-action">
+                <div class="qa-icon"></div>
+                Настройки Wi-Fi
+              </a>
+              <a href="#" class="quick-action">
+                <div class="qa-icon"></div>
+                Техподдержка
+              </a>
             </div>
-            <a href="#" class="card-btn">Подключить</a>
           </div>
 
-          <div class="card">
-            <h3>Твин супер</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 100 мбит/с</b></li>
-              <li>Цифровое ТВ <b>170+ телеканалов</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">590</span>
-              <span class="unit">руб./мес.</span>
+          <!-- ПРОФИЛЬ -->
+          <div class="dash-card">
+            <h3>Профиль</h3>
+
+            <div class="profile-row">
+              <span class="profile-label">Телефон</span>
+              <span class="profile-value">+7 (917) ***-**-42</span>
             </div>
-            <a href="#" class="card-btn">Подключить</a>
+            <div class="profile-row">
+              <span class="profile-label">Email</span>
+              <span class="profile-value">user@mail.ru</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Адрес</span>
+              <span class="profile-value">ул. 40 лет Октября, 7/1</span>
+            </div>
+            <div class="profile-row">
+              <span class="profile-label">Лицевой счёт</span>
+              <span class="profile-value">1234567890</span>
+            </div>
+
+            <a href="#" class="btn-outline" style="display:block; text-align:center; margin-top:16px;">Редактировать профиль</a>
           </div>
 
-          <div class="card">
-            <h3>Твин Базовый</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 70 мбит/с</b></li>
-              <li>Цифровое ТВ <b>170+ телеканалов</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">490</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-          <div class="card">
-            <h3>Твин Эконом</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 30 мбит/с</b></li>
-              <li>Цифровое ТВ <b>170+ телеканалов</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">430</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
+          <!-- ВЫХОД -->
+          <div class="dash-card logout-card">
+            <a href="#">← Выйти из личного кабинета</a>
           </div>
 
         </div>
+
       </div>
-
-      <!-- ИНТЕРНЕТ -->
-      <div class="tariffs-group">
-        <div class="group-title">Интернет</div>
-        <div class="grid-4">
-
-          <div class="card">
-            <h3>Спер 200</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 200 мбит/с</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">630</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-          <div class="card">
-            <h3>Спер</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 100 мбит/с</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">530</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-          <div class="card">
-            <h3>Базовый</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 70 мбит/с</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">420</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-          <div class="card">
-            <h3>Эконом</h3>
-            <ul class="card-features">
-              <li>Интернет <b>до 30 мбит/с</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">310</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ТЕЛЕВИДЕНИЕ -->
-      <div class="tariffs-group">
-        <div class="group-title">Телевидение</div>
-        <div class="grid-4">
-
-          <div class="card">
-            <h3>Базовый</h3>
-            <ul class="card-features">
-              <li>Цифровое ТВ <b>170+ телеканалов</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">220</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- ДОМОФОНЫ И ВИДЕОНАБЛЮДЕНИЕ -->
-      <div class="tariffs-group" id="domofony">
-        <div class="group-title">Домофоны и видеонаблюдение</div>
-        <div class="grid-4">
-
-          <div class="card">
-            <h3>Домофон</h3>
-            <ul class="card-features">
-              <li>Аудиодомофон <b>для подъезда</b></li>
-              <li>Подключение <b>от 1 дня</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">150</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-          <div class="card">
-            <h3>Видеодомофон</h3>
-            <ul class="card-features">
-              <li>Видеодомофон <b>с вызовом</b></li>
-              <li>Запись <b>и архив</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">250</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-          <div class="card">
-            <h3>Видеонаблюдение</h3>
-            <ul class="card-features">
-              <li>Камера <b>на подъезд/двор</b></li>
-              <li>Просмотр <b>с телефона</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">350</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-          <div class="card">
-            <h3>Комплект</h3>
-            <ul class="card-features">
-              <li>Домофон <b>+ видеонаблюдение</b></li>
-              <li>Единый <b>тариф</b></li>
-            </ul>
-            <div class="card-price">
-              <span class="amount">490</span>
-              <span class="unit">руб./мес.</span>
-            </div>
-            <a href="#" class="card-btn">Подключить</a>
-          </div>
-
-        </div>
-      </div>
-
     </div>
   </section>
 
@@ -538,11 +533,6 @@
           <h4>Оплата</h4>
           <a href="#">Личный кабинет</a>
           <a href="#">Способы оплаты</a>
-          <div class="pay-logos">
-            <div class="logo">VISA</div>
-            <div class="logo">MC</div>
-            <div class="logo">МИР</div>
-          </div>
         </div>
         <div class="footer-col">
           <h4>Помощь</h4>
@@ -551,14 +541,16 @@
         </div>
         <div class="footer-col">
           <h4>Контакты</h4>
-          <p style="color: #6B7280; font-size: 15px; margin-bottom: 12px;">Время работы офиса:<br>Пн-Пт 10.00-18.00 (без обеда)<br>office@teleset-ufa.ru<br>г. Уфа, ул. 40 лет Октября, д. 7/1</p>
+          <p style="color: #6B7280; font-size: 15px; margin-bottom: 12px;">
+            Время работы офиса:<br>
+            Пн-Пт 10.00-18.00 (без обеда)<br>
+            office@teleset-ufa.ru<br>
+            г. Уфа, ул. 40 лет Октября, д. 7/1
+          </p>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <div>
-          © 2026 Teleset Ufa &nbsp; | &nbsp; <a href="#" style="color: #9CA3AF; text-decoration: none;">Политика конфиденциальности</a>
-        </div>
+        <div>© 2026 Teleset Ufa &nbsp; | &nbsp; <a href="#" style="color: #9CA3AF; text-decoration: none;">Политика конфиденциальности</a></div>
         <div class="socials">
           <div class="social-circle">WA</div>
           <div class="social-circle">TG</div>
