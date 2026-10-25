@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wireframe</title>
+  <style>
+    /* Сброс стилей и базовые настройки */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Inter', -apple-system, sans-serif;
+      background-color: #F3F4F6; /* Светло-серый фон */
+      color: #374151; /* Темно-серый текст */
+      line-height: 1.5;
+    }
+
+    /* Сетка 1300px */
+    .container {
+      width: 100%;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: #FFFFFF;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: bold;
+      font-size: 20px;
+    }
+    .logo-square {
+      width: 40px; height: 40px;
+      background-color: #9CA3AF;
+      border-radius: 8px;
+    }
+    .nav {
+      display: flex;
+      gap: 30px;
+      font-size: 16px;
+    }
+    .nav a { text-decoration: none; color: #374151; }
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .btn {
+      background-color: #6B7280;
+      color: #FFFFFF;
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* HERO СЕКЦИЯ */
+    .hero {
+      padding: 100px 0;
+      background-color: #F3F4F6;
+    }
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .hero-text { flex: 1; }
+    .hero-text h1 {
+      font-size: 48px;
+      line-height: 1.1;
+      color: #111827;
+      margin-bottom: 30px;
+      font-weight: bold;
+    }
+    .hero-image {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .shape-oval {
+      width: 500px;
+      height: 350px;
+      background-color: #D1D5DB;
+      border-radius: 50%;
+    }
+
+    /* СЕКЦИЯ УСЛУГИ */
+    .services {
+      padding: 80px 0;
+      background-color: #FFFFFF;
+    }
+    .section-title {
+      font-size: 32px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 50px;
+      color: #111827;
+    }
+    
+    /* Сетка для карточек */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 3 колонки */
+      gap: 24px; /* Gutter 24px */
+    }
+    
+    .card {
+      background-color: #F9FAFB;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 40px 30px;
+      text-align: center;
+    }
+    .card-icon {
+      width: 80px; height: 80px;
+      background-color: #D1D5DB;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+    }
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+    .card p {
+      color: #6B7280;
+      font-size: 15px;
+    }
+
+    /* FOOTER */
+    .footer {
+      background-color: #FFFFFF;
+      padding: 80px 0 30px;
+      border-top: 1px solid #E5E7EB;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-bottom: 60px;
+    }
+    .footer-col h4 {
+      font-size: 16px;
+      margin-bottom: 20px;
+      color: #111827;
+    }
+    .footer-col a {
+      display: block;
+      color: #6B7280;
+      text-decoration: none;
+      margin-bottom: 12px;
+      font-size: 15px;
+    }
+    .footer-bottom {
+      border-top: 1px solid #E5E7EB;
+      padding-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 14px;
+      color: #9CA3AF;
+    }
+    .socials {
+      display: flex;
+      gap: 12px;
+    }
+    .social-circle {
+      width: 32px; height: 32px;
+      background-color: #D1D5DB;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container header-inner">
+      <div class="logo">
+        <div class="logo-square"></div>
+        Teleset
+      </div>
+      <nav class="nav">
+        <a href="#">Главная</a>
+        <a href="#">Тарифы и услуги</a>
+        <a href="#">Домофоны и видеонаблюдение</a>
+      </nav>
+      <div class="header-actions">
+        <a href="#" style="text-decoration: none; color: #374151;">Личный кабинет</a>
+        <button class="btn">Подключить</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h1>Быстрый интернет и цифровое ТВ для дома и бизнеса</h1>
+      </div>
+      <div class="hero-image">
+        <div class="shape-oval"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- УСЛУГИ -->
+  <section class="services">
+    <div class="container">
+      <h2 class="section-title">Наши услуги</h2>
+      <div class="grid-3">
+        
+        <!-- Карточка 1 -->
+        <div class="card">
+          <div class="card-icon"></div>
+          <h3>Интернет и ТВ</h3>
+          <p>Стабильный доступ в сеть и HD-каналы</p>
+        </div>
+        
+        <!-- Карточка 2 -->
+        <div class="card">
+          <div class="card-icon"></div>
+          <h3>Электронная подпись</h3>
+          <p>Выпуск ЭЦП для бизнеса и физлиц</p>
+        </div>
+        
+        <!-- Карточка 3 -->
+        <div class="card">
+          <div class="card-icon"></div>
+          <h3>Монтаж и ТВ</h3>
+          <p>Установка антенн и настройка</p>
+        </div>
+
+        <!-- Карточка 4 -->
+        <div class="card">
+          <div class="card-icon"></div>
+          <h3>Домофоны и видеонаблюдение</h3>
+          <p>Безопасность вашего дома и офиса</p>
+        </div>
+        
+        <!-- Карточка 5 -->
+        <div class="card">
+          <div class="card-icon"></div>
+          <h3>Программное обеспечение</h3>
+          <p>Лицензионный софт и антивирусы</p>
+        </div>
+        
+        <!-- Карточка 6 -->
+        <div class="card">
+          <div class="card-icon"></div>
+          <h3>Онлайн-кинотеатр</h3>
+          <p>Фильмы и сериалы в высоком качестве</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Компания</h4>
+          <a href="#">О компании</a>
+          <a href="#">Новости</a>
+          <a href="#">Вакансии</a>
+          <a href="#">Документы</a>
+        </div>
+        <div class="footer-col">
+          <h4>Оплата</h4>
+          <a href="#">Личный кабинет</a>
+          <a href="#">Способы оплаты</a>
+        </div>
+        <div class="footer-col">
+          <h4>Помощь</h4>
+          <a href="#">Вопросы-ответы</a>
+          <a href="#">Техническая поддержка</a>
+        </div>
+        <div class="footer-col">
+          <h4>Контакты</h4>
+          <p style="color: #6B7280; font-size: 15px; margin-bottom: 12px;">Пн-Пт 10.00-18.00<br>office@teleset-ufa.ru<br>г. Уфа, ул. 40 лет Октября, д. 7/1</p>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <div>
+          © 2026 Teleset Ufa &nbsp; | &nbsp; <a href="#" style="color: #9CA3AF; text-decoration: none;">Политика конфиденциальности</a>
+        </div>
+        <div class="socials">
+          <div class="social-circle"></div>
+          <div class="social-circle"></div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
