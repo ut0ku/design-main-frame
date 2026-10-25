@@ -3,302 +3,452 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Teleset — Личный кабинет</title>
+  <title>Wireframe — Teleset Landing (3 уровня)</title>
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
       font-family: 'Inter', -apple-system, sans-serif;
-      background-color: #F3F4F6;
+      background-color: #E5E7EB;
       color: #374151;
       line-height: 1.5;
     }
-    .container {
+
+    /* Фрейм */
+    .frame {
       width: 100%;
+      max-width: 1440px;
+      margin: 0 auto;
+      background: #FFFFFF;
+      box-shadow: 0 0 0 1px #D1D5DB;
+    }
+    .container {
       max-width: 1300px;
       margin: 0 auto;
       padding: 0 20px;
     }
 
-    /* HEADER */
+    /* ===== HEADER ===== */
     .header {
-      background-color: #FFFFFF;
       height: 100px;
+      border-bottom: 1px solid #E5E7EB;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid #E5E7EB;
+      background: #FFFFFF;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     .header-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       width: 100%;
     }
     .logo {
       display: flex;
       align-items: center;
       gap: 12px;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 20px;
+      color: #111827;
     }
     .logo-square {
       width: 40px; height: 40px;
-      background-color: #9CA3AF;
+      background: #9CA3AF;
       border-radius: 8px;
     }
-    .nav { display: flex; gap: 30px; font-size: 16px; }
-    .nav a { text-decoration: none; color: #374151; }
-    .nav a.active { color: #111827; font-weight: 600; }
-    .header-actions { display: flex; align-items: center; gap: 24px; }
+    .nav { display: flex; gap: 28px; font-size: 15px; }
+    .nav a { text-decoration: none; color: #6B7280; }
+    .header-actions { display: flex; align-items: center; gap: 20px; }
+    .header-actions .login {
+      font-size: 14px;
+      color: #6B7280;
+      padding: 8px 14px;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      text-decoration: none;
+    }
     .btn {
-      background-color: #6B7280;
+      display: inline-block;
+      background: #6B7280;
       color: #FFFFFF;
       padding: 12px 24px;
       border-radius: 8px;
       font-weight: 500;
       text-decoration: none;
+      font-size: 15px;
       border: none;
       cursor: pointer;
-      font-size: 16px;
     }
 
-    /* PAGE HEAD */
-    .page-head {
-      padding: 50px 0 20px;
-    }
-    .page-head h1 {
-      font-size: 36px;
+    /* ===== ОБЩИЕ СТИЛИ ===== */
+    section { padding: 80px 0; }
+    .section-alt { background: #F9FAFB; }
+    .section-title {
+      font-size: 32px;
+      font-weight: 700;
       color: #111827;
-      margin-bottom: 8px;
+      text-align: center;
+      margin-bottom: 16px;
     }
-    .page-head p {
+    .section-sub {
+      font-size: 16px;
       color: #6B7280;
-      font-size: 15px;
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 48px;
     }
 
-    /* DASHBOARD LAYOUT */
-    .dashboard {
-      padding: 20px 0 80px;
-    }
-    .dash-grid {
+    /* ===== 1. ПЕРВЫЙ ЭКРАН ===== */
+    .hero { padding: 100px 0 120px; background: #F9FAFB; }
+    .hero-inner {
       display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 24px;
-      align-items: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
     }
-    .dash-card {
-      background: #FFFFFF;
-      border: 1px solid #E5E7EB;
-      border-radius: 16px;
-      padding: 28px;
-      margin-bottom: 24px;
-    }
-    .dash-card:last-child { margin-bottom: 0; }
-    .dash-card h3 {
-      font-size: 18px;
+    .hero h1 {
+      font-size: 48px;
+      line-height: 1.1;
+      font-weight: 700;
       color: #111827;
       margin-bottom: 20px;
-      font-weight: 600;
     }
-
-    /* BALANCE */
-    .balance-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      margin-bottom: 20px;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .balance-amount {
-      font-size: 44px;
-      font-weight: bold;
-      color: #111827;
-      line-height: 1;
-    }
-    .balance-amount small {
-      font-size: 16px;
-      color: #9CA3AF;
-      font-weight: 400;
-    }
-    .balance-meta {
-      font-size: 14px;
+    .hero p {
+      font-size: 17px;
       color: #6B7280;
-      text-align: right;
-      line-height: 1.6;
+      margin-bottom: 32px;
+      max-width: 480px;
     }
-    .balance-meta strong { color: #111827; }
-    .balance-bar {
-      height: 10px;
-      background: #E5E7EB;
-      border-radius: 999px;
-      overflow: hidden;
-      margin-bottom: 22px;
-    }
-    .balance-bar span {
-      display: block;
-      height: 100%;
-      width: 65%;
-      background: #9CA3AF;
-      border-radius: 999px;
-    }
-    .balance-actions {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-    }
-    .btn-outline {
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero-actions .btn-outline {
       display: inline-block;
-      padding: 10px 20px;
-      border: 1px solid #E5E7EB;
+      padding: 12px 24px;
+      border: 1px solid #D1D5DB;
       border-radius: 8px;
-      background: #FFFFFF;
       color: #374151;
       text-decoration: none;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-    }
-    .btn-outline:hover { background: #F9FAFB; }
-
-    /* SERVICE ROWS */
-    .service-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 0;
-      border-bottom: 1px solid #F3F4F6;
-      gap: 16px;
-    }
-    .service-row:last-child { border-bottom: none; padding-bottom: 0; }
-    .service-row:first-of-type { padding-top: 0; }
-    .service-name {
       font-size: 15px;
-      color: #111827;
       font-weight: 500;
+      background: #FFFFFF;
     }
-    .service-desc {
-      font-size: 13px;
-      color: #9CA3AF;
-      margin-top: 2px;
+    .hero-graphic {
+      height: 380px;
+      background: #D1D5DB;
+      border-radius: 50%;
+      max-width: 480px;
+      justify-self: center;
+      width: 100%;
     }
-    .service-status {
+    .hero-badge {
+      display: inline-block;
+      background: #E5E7EB;
+      color: #374151;
       font-size: 12px;
       font-weight: 600;
       padding: 4px 12px;
       border-radius: 999px;
-      background: #F3F4F6;
-      color: #6B7280;
-      white-space: nowrap;
-    }
-    .service-status.active {
-      background: #D1D5DB;
-      color: #374151;
-    }
-    .service-price {
-      font-weight: 600;
-      color: #111827;
-      font-size: 15px;
-      white-space: nowrap;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
 
-    /* QUICK ACTIONS */
-    .quick-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+    /* ===== 2. УСЛУГИ ===== */
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
     }
-    .quick-action {
+    .card {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .card-icon {
+      width: 64px; height: 64px;
+      background: #D1D5DB;
+      border-radius: 50%;
+      margin: 0 auto 20px;
+    }
+    .card h3 {
+      font-size: 18px;
+      color: #111827;
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+    .card p { font-size: 14px; color: #6B7280; }
+
+    /* ===== 3. ПРЕИМУЩЕСТВА ===== */
+    .adv-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .adv-item { text-align: center; padding: 20px; }
+    .adv-icon {
+      width: 56px; height: 56px;
+      background: #D1D5DB;
+      border-radius: 50%;
+      margin: 0 auto 16px;
+    }
+    .adv-item h4 {
+      font-size: 16px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+    .adv-item p { font-size: 14px; color: #6B7280; }
+
+    /* ===== 4. ТАРИФЫ ===== */
+    .tariffs-group { margin-bottom: 48px; }
+    .tariffs-group:last-child { margin-bottom: 0; }
+    .group-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 20px;
       display: flex;
       align-items: center;
       gap: 12px;
-      padding: 14px 16px;
-      border: 1px solid #E5E7EB;
-      border-radius: 10px;
-      background: #F9FAFB;
-      text-decoration: none;
-      color: #374151;
-      font-size: 14px;
-      font-weight: 500;
-      transition: background 0.15s;
     }
-    .quick-action:hover { background: #F3F4F6; }
-    .quick-action .qa-icon {
-      width: 32px;
-      height: 32px;
+    .badge-new {
       background: #D1D5DB;
-      border-radius: 8px;
-      flex-shrink: 0;
+      color: #374151;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
     }
-
-    /* PROFILE */
-    .profile-row {
+    .grid-tariffs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    .tariff {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 28px 24px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 0;
-      border-bottom: 1px solid #F3F4F6;
-      gap: 16px;
+      flex-direction: column;
     }
-    .profile-row:last-of-type { border-bottom: none; }
-    .profile-label {
+    .tariff h4 {
+      font-size: 17px;
+      color: #111827;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    .tariff ul {
+      list-style: none;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .tariff ul li {
       font-size: 14px;
       color: #6B7280;
+      margin-bottom: 8px;
+      padding-left: 20px;
+      position: relative;
     }
-    .profile-value {
+    .tariff ul li::before {
+      content: "";
+      position: absolute;
+      left: 0; top: 6px;
+      width: 10px; height: 10px;
+      background: #D1D5DB;
+      border-radius: 50%;
+    }
+    .tariff-price {
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+    .tariff-price .amount {
+      font-size: 28px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .tariff-price .unit {
+      font-size: 13px;
+      color: #9CA3AF;
+    }
+    .tariff .btn { text-align: center; padding: 10px 20px; font-size: 14px; }
+
+    /* ===== 5. КАК ЭТО РАБОТАЕТ ===== */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .step {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .step-num {
+      width: 44px; height: 44px;
+      background: #D1D5DB;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      color: #374151;
+      margin-bottom: 18px;
+      font-size: 18px;
+    }
+    .step h4 {
+      font-size: 17px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+    .step p { font-size: 14px; color: #6B7280; }
+
+    /* ===== 6. О КОМПАНИИ ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .about-text h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 16px;
+    }
+    .about-text p {
+      font-size: 16px;
+      color: #6B7280;
+      margin-bottom: 16px;
+      line-height: 1.6;
+    }
+    .about-graphic {
+      height: 320px;
+      background: #D1D5DB;
+      border-radius: 16px;
+    }
+
+    /* ===== 7. ОТЗЫВЫ ===== */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .review {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .review-head {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .review-avatar {
+      width: 48px; height: 48px;
+      background: #D1D5DB;
+      border-radius: 50%;
+    }
+    .review-name { font-size: 15px; font-weight: 600; color: #111827; }
+    .review-role { font-size: 13px; color: #9CA3AF; }
+    .review p { font-size: 14px; color: #6B7280; line-height: 1.5; }
+
+    /* ===== 8. КОНТАКТЫ ===== */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .contacts-info h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 24px;
+    }
+    .contacts-info p {
+      font-size: 15px;
+      color: #6B7280;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+    .contacts-info p strong { color: #111827; }
+    .contacts-form {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .contacts-form h3 {
+      font-size: 20px;
+      color: #111827;
+      margin-bottom: 20px;
+    }
+    .form-field { margin-bottom: 16px; }
+    .form-field label {
+      display: block;
+      font-size: 13px;
+      color: #6B7280;
+      margin-bottom: 6px;
+    }
+    .form-field input {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #E5E7EB;
+      border-radius: 8px;
+      background: #F9FAFB;
       font-size: 14px;
       color: #111827;
-      text-align: right;
+      outline: none;
     }
+    .contacts-form .btn { width: 100%; margin-top: 8px; }
 
-    /* LOGOUT */
-    .logout-card {
-      text-align: center;
-      padding: 20px;
-    }
-    .logout-card a {
-      color: #6B7280;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .logout-card a:hover { color: #111827; }
-
-    /* FOOTER */
+    /* ===== FOOTER ===== */
     .footer {
-      background-color: #FFFFFF;
-      padding: 80px 0 30px;
+      background: #FFFFFF;
       border-top: 1px solid #E5E7EB;
+      padding: 60px 0 30px;
     }
     .footer-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 24px;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
     .footer-col h4 {
-      font-size: 16px;
-      margin-bottom: 20px;
+      font-size: 15px;
       color: #111827;
+      margin-bottom: 16px;
     }
     .footer-col a {
       display: block;
+      font-size: 14px;
       color: #6B7280;
       text-decoration: none;
-      margin-bottom: 12px;
-      font-size: 15px;
+      margin-bottom: 10px;
     }
+    .footer-col p { font-size: 14px; color: #6B7280; line-height: 1.6; }
     .footer-bottom {
       border-top: 1px solid #E5E7EB;
-      padding-top: 30px;
+      padding-top: 24px;
       display: flex;
       justify-content: space-between;
-      font-size: 14px;
+      align-items: center;
+      font-size: 13px;
       color: #9CA3AF;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    .socials { display: flex; gap: 12px; }
+    .socials { display: flex; gap: 10px; }
     .social-circle {
-      width: 32px;
-      height: 32px;
-      background-color: #D1D5DB;
+      width: 32px; height: 32px;
+      background: #D1D5DB;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -308,256 +458,469 @@
       color: #6B7280;
     }
 
-    /* RESPONSIVE */
+    /* ===== POP-UPS ===== */
+    .popups-title {
+      text-align: center;
+      padding: 60px 20px 20px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #111827;
+      background: #E5E7EB;
+    }
+    .popups {
+      background: #E5E7EB;
+      padding: 40px 20px 80px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1440px;
+      margin: 0 auto;
+    }
+    .popup {
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 16px;
+      padding: 28px;
+    }
+    .popup h4 {
+      font-size: 18px;
+      color: #111827;
+      margin-bottom: 8px;
+    }
+    .popup .hint {
+      font-size: 13px;
+      color: #9CA3AF;
+      margin-bottom: 20px;
+    }
+    .popup .form-field { margin-bottom: 14px; }
+    .popup .btn { width: 100%; margin-top: 8px; }
+
+    /* ===== АДАПТИВ ===== */
+    @media (max-width: 1100px) {
+      .grid-4, .grid-tariffs, .adv-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
-      .dash-grid { grid-template-columns: 1fr; }
+      .hero-inner, .about-grid, .contacts-grid { grid-template-columns: 1fr; gap: 40px; }
       .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .popups { grid-template-columns: 1fr; }
     }
     @media (max-width: 768px) {
       .header { height: auto; padding: 16px 0; }
-      .header-inner {
-        flex-direction: column;
-        gap: 16px;
-        align-items: flex-start;
-      }
-      .nav { flex-wrap: wrap; gap: 16px; }
-      .page-head h1 { font-size: 28px; }
-      .balance-amount { font-size: 34px; }
-      .balance-meta { text-align: left; }
+      .header-inner { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .nav { flex-wrap: wrap; gap: 14px; }
+      .hero h1 { font-size: 32px; }
+      .grid-4, .grid-tariffs, .adv-grid, .steps, .reviews-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; gap: 16px; }
+      .footer-bottom { flex-direction: column; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header-inner">
-      <div class="logo">
-        <div class="logo-square"></div>
-        Teleset
-      </div>
-      <nav class="nav">
-        <a href="#">Главная</a>
-        <a href="#">Тарифы и услуги</a>
-        <a href="#">Домофоны и видеонаблюдение</a>
-        <a href="#" class="active">Личный кабинет</a>
-      </nav>
-      <div class="header-actions">
-        <a href="#" style="text-decoration: none; color: #374151;">Личный кабинет</a>
-        <button class="btn">Подключить</button>
-      </div>
-    </div>
-  </header>
+  <div class="frame">
 
-  <!-- PAGE HEAD -->
-  <div class="container">
-    <div class="page-head">
-      <h1>Личный кабинет</h1>
-      <p>Лицевой счёт: 1234567890 · Тариф «Твин супер 200»</p>
-    </div>
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+      <div class="container header-inner">
+        <div class="logo">
+          <div class="logo-square"></div>
+          Teleset
+        </div>
+        <nav class="nav">
+          <a href="#hero">Главная</a>
+          <a href="#services">Услуги</a>
+          <a href="#tariffs">Тарифы</a>
+          <a href="#how">Как подключиться</a>
+          <a href="#contacts">Контакты</a>
+        </nav>
+        <div class="header-actions">
+          <a href="#" class="login">Личный кабинет</a>
+          <a href="#" class="btn">Подключить</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== 1. ПЕРВЫЙ ЭКРАН ===== -->
+    <section class="hero" id="hero">
+      <div class="container hero-inner">
+        <div>
+          <span class="hero-badge">Новый тариф «Твин супер 200»</span>
+          <h1>Быстрый интернет и цифровое ТВ для дома и бизнеса</h1>
+          <p>Подключите интернет до 200 мбит/с и 170+ телеканалов в одном тарифе. Стабильно, выгодно, с поддержкой 24/7.</p>
+          <div class="hero-actions">
+            <a href="#" class="btn">Подключить</a>
+            <a href="#tariffs" class="btn-outline">Смотреть тарифы</a>
+          </div>
+        </div>
+        <div class="hero-graphic"></div>
+      </div>
+    </section>
+
+    <!-- ===== 2. УСЛУГИ ===== -->
+    <section id="services">
+      <div class="container">
+        <h2 class="section-title">Наши услуги</h2>
+        <p class="section-sub">Выберите, что вам нужно — интернет, телевидение, домофон или видеонаблюдение</p>
+        <div class="grid-4">
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3>Интернет</h3>
+            <p>Скорость до 200 мбит/с для дома и офиса</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3>Телевидение</h3>
+            <p>170+ телеканалов в цифровом качестве</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3>Домофоны</h3>
+            <p>Аудио- и видеодомофоны для подъезда</p>
+          </div>
+          <div class="card">
+            <div class="card-icon"></div>
+            <h3>Видеонаблюдение</h3>
+            <p>Камеры на подъезд и двор с просмотром с телефона</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 3. ПРЕИМУЩЕСТВА ===== -->
+    <section class="section-alt">
+      <div class="container">
+        <h2 class="section-title">Почему Teleset</h2>
+        <p class="section-sub">Надёжный провайдер в Уфе — работаем с 2010 года</p>
+        <div class="adv-grid">
+          <div class="adv-item">
+            <div class="adv-icon"></div>
+            <h4>Скорость до 200 мбит/с</h4>
+            <p>Хватит на все устройства и 4K-видео</p>
+          </div>
+          <div class="adv-item">
+            <div class="adv-icon"></div>
+            <h4>Поддержка 24/7</h4>
+            <p>Отвечаем в чате и по телефону круглосуточно</p>
+          </div>
+          <div class="adv-item">
+            <div class="adv-icon"></div>
+            <h4>Честная цена</h4>
+            <p>Без скрытых платежей и навязанных услуг</p>
+          </div>
+          <div class="adv-item">
+            <div class="adv-icon"></div>
+            <h4>Покрытие по Уфе</h4>
+            <p>Подключение в большинстве районов города</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. ТАРИФЫ ===== -->
+    <section id="tariffs">
+      <div class="container">
+        <h2 class="section-title">Тарифы и услуги</h2>
+        <p class="section-sub">Выберите подходящий набор услуг и закажите подключение</p>
+
+        <div class="tariffs-group">
+          <div class="group-title">
+            Интернет + Телевидение
+            <span class="badge-new">new!</span>
+          </div>
+          <div class="grid-tariffs">
+            <div class="tariff">
+              <h4>Твин супер 200</h4>
+              <ul><li>Интернет до 200 мбит/с</li><li>Цифровое ТВ 170+ каналов</li></ul>
+              <div class="tariff-price"><span class="amount">690</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Твин супер</h4>
+              <ul><li>Интернет до 100 мбит/с</li><li>Цифровое ТВ 170+ каналов</li></ul>
+              <div class="tariff-price"><span class="amount">590</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Твин Базовый</h4>
+              <ul><li>Интернет до 70 мбит/с</li><li>Цифровое ТВ 170+ каналов</li></ul>
+              <div class="tariff-price"><span class="amount">490</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Твин Эконом</h4>
+              <ul><li>Интернет до 30 мбит/с</li><li>Цифровое ТВ 170+ каналов</li></ul>
+              <div class="tariff-price"><span class="amount">430</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tariffs-group">
+          <div class="group-title">Интернет</div>
+          <div class="grid-tariffs">
+            <div class="tariff">
+              <h4>Спер 200</h4>
+              <ul><li>Интернет до 200 мбит/с</li></ul>
+              <div class="tariff-price"><span class="amount">630</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Спер</h4>
+              <ul><li>Интернет до 100 мбит/с</li></ul>
+              <div class="tariff-price"><span class="amount">530</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Базовый</h4>
+              <ul><li>Интернет до 70 мбит/с</li></ul>
+              <div class="tariff-price"><span class="amount">420</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Эконом</h4>
+              <ul><li>Интернет до 30 мбит/с</li></ul>
+              <div class="tariff-price"><span class="amount">310</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tariffs-group">
+          <div class="group-title">Телевидение</div>
+          <div class="grid-tariffs">
+            <div class="tariff">
+              <h4>Базовый</h4>
+              <ul><li>Цифровое ТВ 170+ каналов</li></ul>
+              <div class="tariff-price"><span class="amount">220</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="tariffs-group">
+          <div class="group-title">Домофоны и видеонаблюдение</div>
+          <div class="grid-tariffs">
+            <div class="tariff">
+              <h4>Домофон</h4>
+              <ul><li>Аудиодомофон для подъезда</li><li>Подключение от 1 дня</li></ul>
+              <div class="tariff-price"><span class="amount">150</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Видеодомофон</h4>
+              <ul><li>Видеодомофон с вызовом</li><li>Запись и архив</li></ul>
+              <div class="tariff-price"><span class="amount">250</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Видеонаблюдение</h4>
+              <ul><li>Камера на подъезд/двор</li><li>Просмотр с телефона</li></ul>
+              <div class="tariff-price"><span class="amount">350</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+            <div class="tariff">
+              <h4>Комплект</h4>
+              <ul><li>Домофон + видеонаблюдение</li><li>Единый тариф</li></ul>
+              <div class="tariff-price"><span class="amount">490</span><span class="unit">руб./мес.</span></div>
+              <a href="#" class="btn">Подключить</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== 5. КАК ЭТО РАБОТАЕТ ===== -->
+    <section class="section-alt" id="how">
+      <div class="container">
+        <h2 class="section-title">Как подключиться</h2>
+        <p class="section-sub">Три простых шага — от заявки до работающего интернета</p>
+        <div class="steps">
+          <div class="step">
+            <div class="step-num">1</div>
+            <h4>Оставьте заявку</h4>
+            <p>Заполните форму на сайте или позвоните — мы уточним адрес и подберём тариф.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">2</div>
+            <h4>Приезжает мастер</h4>
+            <p>В удобное время проведёт кабель, настроит оборудование и Wi-Fi.</p>
+          </div>
+          <div class="step">
+            <div class="step-num">3</div>
+            <h4>Пользуйтесь</h4>
+            <p>Интернет и ТВ работают. Управляйте услугами в личном кабинете.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 6. О КОМПАНИИ ===== -->
+    <section>
+      <div class="container about-grid">
+        <div class="about-text">
+          <h2>О компании</h2>
+          <p>Teleset Ufa — региональный провайдер интернета, телевидения и систем безопасности. Работаем в Уфе с 2010 года и обслуживаем более 20 000 домохозяйств.</p>
+          <p>Мы подключаем интернет, цифровое ТВ, домофоны и видеонаблюдение — всё в одном месте, с единой поддержкой и личным кабинетом.</p>
+        </div>
+        <div class="about-graphic"></div>
+      </div>
+    </section>
+
+    <!-- ===== 7. ОТЗЫВЫ ===== -->
+    <section class="section-alt">
+      <div class="container">
+        <h2 class="section-title">Отзывы клиентов</h2>
+        <p class="section-sub">Что говорят наши абоненты</p>
+        <div class="reviews-grid">
+          <div class="review">
+            <div class="review-head">
+              <div class="review-avatar"></div>
+              <div>
+                <div class="review-name">Алексей</div>
+                <div class="review-role">ул. 40 лет Октября</div>
+              </div>
+            </div>
+            <p>Подключили интернет и ТВ за один день. Скорость реально соответствует заявленной, мастер всё настроил и объяснил.</p>
+          </div>
+          <div class="review">
+            <div class="review-head">
+              <div class="review-avatar"></div>
+              <div>
+                <div class="review-name">Марина</div>
+                <div class="review-role">ул. Комсомольская</div>
+              </div>
+            </div>
+            <p>Пользуюсь личным кабинетом — удобно оплачивать и менять тариф. Поддержка отвечает быстро, даже вечером.</p>
+          </div>
+          <div class="review">
+            <div class="review-head">
+              <div class="review-avatar"></div>
+              <div>
+                <div class="review-name">Дмитрий</div>
+                <div class="review-role">ул. Менделеева</div>
+              </div>
+            </div>
+            <p>Поставили видеонаблюдение на подъезд. Картинка чёткая, смотрю с телефона. Очень доволен сервисом.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 8. КОНТАКТЫ ===== -->
+    <section id="contacts">
+      <div class="container contacts-grid">
+        <div class="contacts-info">
+          <h2>Контакты</h2>
+          <p><strong>Время работы офиса:</strong><br>Пн–Пт 10.00–18.00 (без обеда)</p>
+          <p><strong>Email:</strong><br>office@teleset-ufa.ru</p>
+          <p><strong>Адрес:</strong><br>г. Уфа, ул. 40 лет Октября, д. 7/1</p>
+          <p><strong>Телефон:</strong><br>+7 (347) 000-00-00</p>
+        </div>
+        <div class="contacts-form">
+          <h3>Оставьте заявку</h3>
+          <div class="form-field">
+            <label>Имя</label>
+            <input type="text" placeholder="Как к вам обращаться">
+          </div>
+          <div class="form-field">
+            <label>Телефон</label>
+            <input type="tel" placeholder="+7 (___) ___-__-__">
+          </div>
+          <div class="form-field">
+            <label>Адрес подключения</label>
+            <input type="text" placeholder="Улица, дом, квартира">
+          </div>
+          <button class="btn">Отправить заявку</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>Компания</h4>
+            <a href="#">О компании</a>
+            <a href="#">Новости</a>
+            <a href="#">Вакансии</a>
+            <a href="#">Документы</a>
+          </div>
+          <div class="footer-col">
+            <h4>Оплата</h4>
+            <a href="#">Личный кабинет</a>
+            <a href="#">Способы оплаты</a>
+          </div>
+          <div class="footer-col">
+            <h4>Помощь</h4>
+            <a href="#">Вопросы-ответы</a>
+            <a href="#">Техническая поддержка</a>
+          </div>
+          <div class="footer-col">
+            <h4>Контакты</h4>
+            <p>Время работы офиса:<br>Пн-Пт 10.00-18.00 (без обеда)<br>office@teleset-ufa.ru<br>г. Уфа, ул. 40 лет Октября, д. 7/1</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <div>© 2026 Teleset Ufa &nbsp; | &nbsp; <a href="#" style="color: #9CA3AF;">Политика конфиденциальности</a></div>
+          <div class="socials">
+            <div class="social-circle">WA</div>
+            <div class="social-circle">TG</div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
   </div>
 
-  <!-- DASHBOARD -->
-  <section class="dashboard">
-    <div class="container">
-      <div class="dash-grid">
+  <!-- ===== POP-UPS ===== -->
+  <h2 class="popups-title">Всплывающие окна (pop-up)</h2>
+  <div class="popups">
 
-        <!-- ЛЕВАЯ КОЛОНКА -->
-        <div>
-
-          <!-- БАЛАНС -->
-          <div class="dash-card">
-            <h3>Баланс</h3>
-            <div class="balance-row">
-              <div class="balance-amount">0 <small>руб.</small></div>
-              <div class="balance-meta">
-                Абонентская плата: <strong>690 руб./мес.</strong><br>
-                Списание: 1 ноября 2026
-              </div>
-            </div>
-            <div class="balance-bar"><span></span></div>
-            <div class="balance-actions">
-              <a href="#" class="btn" style="padding:10px 20px; font-size:14px;">Пополнить</a>
-              <a href="#" class="btn-outline">Автоплатёж</a>
-              <a href="#" class="btn-outline">Обещанный платёж</a>
-            </div>
-          </div>
-
-          <!-- МОИ УСЛУГИ -->
-          <div class="dash-card">
-            <h3>Мои услуги</h3>
-
-            <div class="service-row">
-              <div>
-                <div class="service-name">Интернет</div>
-                <div class="service-desc">Твин супер 200 · до 200 мбит/с</div>
-              </div>
-              <span class="service-status active">Активна</span>
-            </div>
-
-            <div class="service-row">
-              <div>
-                <div class="service-name">Телевидение</div>
-                <div class="service-desc">Цифровое ТВ · 170+ телеканалов</div>
-              </div>
-              <span class="service-status active">Активна</span>
-            </div>
-
-            <div class="service-row">
-              <div>
-                <div class="service-name">Домофон</div>
-                <div class="service-desc">Аудиодомофон для подъезда</div>
-              </div>
-              <span class="service-status">Не подключена</span>
-            </div>
-
-            <div class="service-row">
-              <div>
-                <div class="service-name">Видеонаблюдение</div>
-                <div class="service-desc">Камера на подъезд/двор</div>
-              </div>
-              <span class="service-status">Не подключена</span>
-            </div>
-          </div>
-
-          <!-- ИСТОРИЯ ПЛАТЕЖЕЙ -->
-          <div class="dash-card">
-            <h3>Последние платежи</h3>
-
-            <div class="service-row">
-              <div>
-                <div class="service-name">Октябрь 2026</div>
-                <div class="service-desc">Оплата банковской картой</div>
-              </div>
-              <span class="service-price">690 ₽</span>
-            </div>
-
-            <div class="service-row">
-              <div>
-                <div class="service-name">Сентябрь 2026</div>
-                <div class="service-desc">Оплата банковской картой</div>
-              </div>
-              <span class="service-price">690 ₽</span>
-            </div>
-
-            <div class="service-row">
-              <div>
-                <div class="service-name">Август 2026</div>
-                <div class="service-desc">Автоплатёж</div>
-              </div>
-              <span class="service-price">690 ₽</span>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- ПРАВАЯ КОЛОНКА -->
-        <div>
-
-          <!-- БЫСТРЫЕ ДЕЙСТВИЯ -->
-          <div class="dash-card">
-            <h3>Быстрые действия</h3>
-            <div class="quick-actions">
-              <a href="#" class="quick-action">
-                <div class="qa-icon"></div>
-                Сменить тариф
-              </a>
-              <a href="#" class="quick-action">
-                <div class="qa-icon"></div>
-                Подключить услугу
-              </a>
-              <a href="#" class="quick-action">
-                <div class="qa-icon"></div>
-                Приостановить услуги
-              </a>
-              <a href="#" class="quick-action">
-                <div class="qa-icon"></div>
-                Настройки Wi-Fi
-              </a>
-              <a href="#" class="quick-action">
-                <div class="qa-icon"></div>
-                Техподдержка
-              </a>
-            </div>
-          </div>
-
-          <!-- ПРОФИЛЬ -->
-          <div class="dash-card">
-            <h3>Профиль</h3>
-
-            <div class="profile-row">
-              <span class="profile-label">Телефон</span>
-              <span class="profile-value">+7 (917) ***-**-42</span>
-            </div>
-            <div class="profile-row">
-              <span class="profile-label">Email</span>
-              <span class="profile-value">user@mail.ru</span>
-            </div>
-            <div class="profile-row">
-              <span class="profile-label">Адрес</span>
-              <span class="profile-value">ул. 40 лет Октября, 7/1</span>
-            </div>
-            <div class="profile-row">
-              <span class="profile-label">Лицевой счёт</span>
-              <span class="profile-value">1234567890</span>
-            </div>
-
-            <a href="#" class="btn-outline" style="display:block; text-align:center; margin-top:16px;">Редактировать профиль</a>
-          </div>
-
-          <!-- ВЫХОД -->
-          <div class="dash-card logout-card">
-            <a href="#">← Выйти из личного кабинета</a>
-          </div>
-
-        </div>
-
+    <div class="popup">
+      <h4>Подключить тариф</h4>
+      <p class="hint">Оставьте заявку — перезвоним в течение 15 минут</p>
+      <div class="form-field">
+        <label>Имя</label>
+        <input type="text" placeholder="Ваше имя">
       </div>
+      <div class="form-field">
+        <label>Телефон</label>
+        <input type="tel" placeholder="+7 (___) ___-__-__">
+      </div>
+      <div class="form-field">
+        <label>Тариф</label>
+        <input type="text" value="Твин супер 200">
+      </div>
+      <button class="btn">Отправить</button>
     </div>
-  </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col">
-          <h4>Компания</h4>
-          <a href="#">О компании</a>
-          <a href="#">Новости</a>
-          <a href="#">Вакансии</a>
-          <a href="#">Документы</a>
-        </div>
-        <div class="footer-col">
-          <h4>Оплата</h4>
-          <a href="#">Личный кабинет</a>
-          <a href="#">Способы оплаты</a>
-        </div>
-        <div class="footer-col">
-          <h4>Помощь</h4>
-          <a href="#">Вопросы-ответы</a>
-          <a href="#">Техническая поддержка</a>
-        </div>
-        <div class="footer-col">
-          <h4>Контакты</h4>
-          <p style="color: #6B7280; font-size: 15px; margin-bottom: 12px;">
-            Время работы офиса:<br>
-            Пн-Пт 10.00-18.00 (без обеда)<br>
-            office@teleset-ufa.ru<br>
-            г. Уфа, ул. 40 лет Октября, д. 7/1
-          </p>
-        </div>
+    <div class="popup">
+      <h4>Вход в личный кабинет</h4>
+      <p class="hint">Используйте номер лицевого счёта или телефон</p>
+      <div class="form-field">
+        <label>Лицевой счёт или телефон</label>
+        <input type="text" placeholder="1234567890">
       </div>
-      <div class="footer-bottom">
-        <div>© 2026 Teleset Ufa &nbsp; | &nbsp; <a href="#" style="color: #9CA3AF; text-decoration: none;">Политика конфиденциальности</a></div>
-        <div class="socials">
-          <div class="social-circle">WA</div>
-          <div class="social-circle">TG</div>
-        </div>
+      <div class="form-field">
+        <label>Пароль</label>
+        <input type="password" placeholder="••••••••">
       </div>
+      <button class="btn">Войти</button>
     </div>
-  </footer>
+
+    <div class="popup">
+      <h4>Видеонаблюдение</h4>
+      <p class="hint">Подробнее об услуге</p>
+      <div style="height: 120px; background: #D1D5DB; border-radius: 8px; margin-bottom: 16px;"></div>
+      <p style="font-size: 14px; color: #6B7280; margin-bottom: 16px;">Камера на подъезд или двор, просмотр с телефона, архив записей 30 дней. Подключение от 1 дня.</p>
+      <button class="btn">Подключить</button>
+    </div>
+
+  </div>
 
 </body>
 </html>
